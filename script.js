@@ -1,15 +1,4 @@
 const effectMessages = {
-  sky: "Bau troi su thi da duoc bat mode chieu toi mon Toan.",
-  steam: "Bep am len: them mot chut mui vi cho cau chuyen.",
-  note: "Piano vao nhip. Ban cap nhat truong thanh dang duoc tai ve.",
-  shuttle: "Cau long tang toc. Co ve ong noi build nen tang kha chac.",
-  page: "Lat trang moi, van la to, chi la o mot toa do khac.",
-  riff: "Guitar keu len mot cai. Chiec dan dau tien van o do.",
-  game: "Checkpoint da luu. Neu thua thi minh choi lai, nhung lan nay co kinh nghiem.",
-  hug: "Buff om ngu kich hoat. Tam trang +20, phong thu cam xuc +15.",
-  confetti: "Do vot nhung van la do. Man clutch nay tinh diem.",
-  pulse: "Noi that mot chut, roi lai cuoi tiep cho doi bot cang.",
-  film: "Man hinh cuoi san sang. Tha video vao la co after-credit scene.",
   sky: "Bầu trời sử thi đã được bật mode chiều tối môn Toán.",
   steam: "Bếp ấm lên: thêm một chút mùi vị cho câu chuyện.",
   note: "Piano vào nhịp. Bản cập nhật trưởng thành đang được tải về.",
@@ -29,7 +18,6 @@ const effectClasses = {
   shuttle: "shuttle-pop",
   page: "page-pop",
   riff: "riff-pop",
-  shuttle: "shuttle-pop",
   game: "game-pop",
   hug: "hug-pop",
   confetti: "confetti-pop",
@@ -38,6 +26,7 @@ const effectClasses = {
 };
 const cursorLight = document.querySelector(".cursor-light");
 const spaceHint = document.querySelector("#spaceHint");
+const scrollHint = document.querySelector("#scrollHint");
 // Ensure cursor light is hidden initially
 if (cursorLight) {
   cursorLight.style.opacity = "0";
@@ -46,10 +35,22 @@ if (cursorLight) {
 function getActiveSection() {
   const panels = [...document.querySelectorAll("[data-effect]")];
   const viewportMiddle = window.innerHeight / 2;
+  return panels.reduce((closest, panel) => {
+    const rect = panel.getBoundingClientRect();
+    const distance = Math.abs(rect.top + rect.height / 2 - viewportMiddle);
+    if (!closest || distance < closest.distance) {
+      return { panel, distance };
+    }
+    return closest;
+  }, null)?.panel;
+}
+function showBurst(message) {
+  const oldBurst = document.querySelector(".effect-burst");
+  oldBurst?.remove();
+  const burst = document.createElement("div");
   burst.className = "effect-burst";
   burst.textContent = message;
   document.body.appendChild(burst);
-  window.setTimeout(() => burst.remove(), 900);
   
   // Clean fade out handled by CSS
   window.setTimeout(() => burst.remove(), 1200);
@@ -112,7 +113,6 @@ function triggerSectionEffect(panel = getActiveSection()) {
   if (!panel) return;
   const effect = panel.dataset.effect;
   const effectClass = effectClasses[effect];
-  showBurst(effectMessages[effect] || "Hieu ung da kich hoat.");
   
   // Trigger text burst
   showBurst(effectMessages[effect] || "Hiệu ứng đã kích hoạt.");
@@ -126,23 +126,17 @@ function triggerSectionEffect(panel = getActiveSection()) {
   // Trigger CSS pop transitions
   if (effectClass) {
     panel.classList.remove(effectClass);
-    void panel.offsetWidth;
     void panel.offsetWidth; // Trigger reflow
     panel.classList.add(effectClass);
-    window.setTimeout(() => panel.classList.remove(effectClass), 800);
     window.setTimeout(() => panel.classList.remove(effectClass), 1000);
   } else {
     // Fallback animation
     panel.animate(
       [
-        { transform: "translateY(0)", filter: "saturate(1)" },
-        { transform: "translateY(-6px)", filter: "saturate(1.2)" },
-        { transform: "translateY(0)", filter: "saturate(1)" },
         { transform: "translateY(0) scale(1)", filter: "brightness(1)" },
         { transform: "translateY(-8px) scale(1.01)", filter: "brightness(1.05)" },
         { transform: "translateY(0) scale(1)", filter: "brightness(1)" },
       ],
-      { duration: 650, easing: "cubic-bezier(.2,.8,.2,1)" },
       { duration: 650, easing: "cubic-bezier(.25,.8,.25,1)" },
     );
   }
@@ -166,6 +160,8 @@ function navigateToNext() {
     block: "center",
   });
   // Apply visual focus and active animations
+  // Apply visual focus and active animations immediately
+  lastActiveSection = nextElement;
   triggerSectionEffect(nextElement);
 }
 // Handle Space key navigation
@@ -175,21 +171,35 @@ document.addEventListener("keydown", (event) => {
     target instanceof HTMLInputElement ||
     target instanceof HTMLTextAreaElement ||
     target?.isContentEditable;
+// Scroll Reveal Logic (trigger effect when element crosses center of screen)
+let lastActiveSection = null;
+let isScrolling = false;
   if (event.code === "Space" && !isTyping) {
     event.preventDefault();
-    triggerSectionEffect();
     navigateToNext();
+function checkActiveSectionOnScroll() {
+  const active = getActiveSection();
+  if (active && active !== lastActiveSection) {
+    lastActiveSection = active;
+    triggerSectionEffect(active);
+  }
+  isScrolling = false;
+}
+window.addEventListener("scroll", () => {
+  if (!isScrolling) {
+    window.requestAnimationFrame(checkActiveSectionOnScroll);
+    isScrolling = true;
   }
 });
-spaceHint?.addEventListener("click", () => triggerSectionEffect());
+// Run initial check on load
+checkActiveSectionOnScroll();
 // Handle Hint button click
 spaceHint?.addEventListener("click", () => {
+scrollHint?.addEventListener("click", () => {
   navigateToNext();
 });
 // Update cursor-light on pointer move
 window.addEventListener("pointermove", (event) => {
-  cursorLight.style.left = `${event.clientX}px`;
-  cursorLight.style.top = `${event.clientY}px`;
   if (cursorLight) {
     if (cursorLight.style.opacity === "0") {
       cursorLight.style.opacity = "1";
@@ -205,18 +215,15 @@ const observer = new IntersectionObserver(
       if (entry.isIntersecting) {
         entry.target.animate(
           [
-            { opacity: 0, transform: "translateY(24px)" },
             { opacity: 0, transform: "translateY(32px)" },
             { opacity: 1, transform: "translateY(0)" },
           ],
-          { duration: 700, easing: "cubic-bezier(.2,.8,.2,1)", fill: "both" },
           { duration: 800, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "both" },
         );
         observer.unobserve(entry.target);
       }
     });
   },
-  { threshold: 0.18 },
   { threshold: 0.12 },
 );
 document.querySelectorAll(".section-panel, .stat-card, .three-panel article").forEach((el) => {
