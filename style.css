@@ -1,0 +1,117 @@
+
+.riff-pop .guitar {
+  animation: riff 700ms ease;
+}
+
+.shuttle-pop {
+  animation: shake 520ms ease;
+}
+
+.pulse-pop {
+  animation: soft-pulse 760ms ease;
+}
+
+.film-pop video {
+  animation: film-pop 640ms ease;
+}
+
+@keyframes burst-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(1rem) scale(0.96);
+  }
+  18%,
+  78% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-0.6rem) scale(0.98);
+  }
+}
+
+@keyframes sun-bounce {
+  50% {
+    transform: scale(1.14);
+    box-shadow: 0 0 120px rgba(255, 224, 138, 1);
+  }
+}
+
+@keyframes riff {
+  35% {
+    transform: rotate(-7deg) scale(1.04);
+  }
+  70% {
+    transform: rotate(5deg) scale(1.02);
+  }
+}
+
+@keyframes shake {
+  20%,
+  60% {
+    transform: translateX(-0.35rem);
+  }
+  40%,
+  80% {
+    transform: translateX(0.35rem);
+  }
+}
+
+@keyframes soft-pulse {
+  50% {
+    box-shadow: 0 26px 90px rgba(239, 111, 97, 0.24);
+    transform: scale(1.01);
+  }
+}
+
+@keyframes film-pop {
+  50% {
+    filter: saturate(1.25) contrast(1.08);
+    transform: scale(1.015);
+  }
+}
+
+@media (max-width: 860px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav {
+    justify-content: flex-start;
+  }
+
+  .hero,
+  .split,
+  .heart-section,
+  .profile-grid,
+  .three-panel,
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .split {
+    min-height: auto;
+  }
+
+  .split.left .story-copy,
+  .split.left .visual-card {
+    order: initial;
+  }
+
+  h1 {
+    max-width: 10ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
