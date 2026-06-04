@@ -1,3 +1,53 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chuyen cua to</title>
+    <title>Chuyện của tớ | Bản nhạc lệch nhịp đầy tự lập</title>
+    <meta name="description" content="Trang nhật ký kể chuyện tương tác (storytelling portfolio) của tớ. Nhấn Space để khám phá câu chuyện tự lập, âm nhạc, sở thích và những dấu mốc trưởng thành." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor-light" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#hero" aria-label="Ve dau trang">
+        <span class="brand-mark">16:15</span>
+        <span>29.07.2005</span>
+      </a>
+      <nav aria-label="Dieu huong chinh">
+        <a href="#timeline">Dong doi</a>
+        <a href="#music">Am nhac</a>
+        <a href="#heart">Goc that long</a>
+        <a href="#videos">Video</a>
+      </nav>
+    </header>
+    <main>
+      <section id="hero" class="hero section-panel" data-effect="sky">
+        <div class="hero-media visual-card">
+          <div class="sun"></div>
+          <div class="mountain mountain-back"></div>
+          <div class="mountain mountain-mid"></div>
+          <div class="river"></div>
+          <div class="sparkles" aria-hidden="true"></div>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Tuyen Quang sinh ra, Ha Giang nuoi lon</p>
+          <h1>Chao cau, to la mot ban nhac hoi lech nhip nhung van co gu.</h1>
+          <p>
+            To sinh luc 16h15 ngay 29/7/2005. Neu doi to la mot game open-world,
+            thi save file nay co kha nhieu map: song xa nha, o voi ong ba, hoc
+            nhac cu, thi chuyen, len dai hoc va vai lan bi doi quang vao che do
+            kho ma van con dang login.
+          </p>
+          <div class="hero-actions">
             <a class="button primary" href="#timeline">Doc cau chuyen</a>
             <button class="button ghost" type="button" id="spaceHint">
               Nhan Space de doi hieu ung
@@ -5,7 +55,6 @@
           </div>
         </div>
       </section>
-
       <section id="profile" class="profile-grid">
         <article class="stat-card" data-effect="steam">
           <span class="stat-number">4</span>
@@ -33,7 +82,6 @@
           </p>
         </article>
       </section>
-
       <section id="timeline" class="story section-panel split right" data-effect="page">
         <div class="visual-card collage">
           <div class="photo photo-one">TQ</div>
@@ -55,7 +103,6 @@
           </p>
         </div>
       </section>
-
       <section id="music" class="story section-panel split left" data-effect="riff">
         <div class="story-copy">
           <p class="eyebrow">Piano, guitar, trong va mot cai ban toi nghiep</p>
@@ -80,7 +127,6 @@
           <div class="drum"></div>
         </div>
       </section>
-
       <section class="three-panel" aria-label="So thich">
         <article data-effect="steam">
           <span class="icon">🍳</span>
@@ -98,7 +144,6 @@
           <p>To thich cam giac duoc om ngu. Noi ngan gon: day la buff tinh than.</p>
         </article>
       </section>
-
       <section id="school" class="story section-panel split right" data-effect="confetti">
         <div class="visual-card exam-card">
           <div class="ticket">Thi chuyen</div>
@@ -121,7 +166,6 @@
           </p>
         </div>
       </section>
-
       <section id="heart" class="heart-section section-panel" data-effect="pulse">
         <div>
           <p class="eyebrow">Goc that long</p>
@@ -146,7 +190,6 @@
           </p>
         </div>
       </section>
-
       <section id="videos" class="videos section-panel" data-effect="film">
         <div class="section-heading">
           <p class="eyebrow">Ba video dat o cuoi</p>
@@ -163,14 +206,12 @@
         </div>
       </section>
     </main>
-
     <footer>
       <p>
         Viet bang ngoi "to", de danh cho mot nguoi vua biet nau an, vua biet choi
         nhac, vua hay lam tro, va doi khi chi muon duoc om ngu cho yen.
       </p>
     </footer>
-
     <script src="script.js"></script>
   </body>
 </html>
