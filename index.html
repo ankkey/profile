@@ -11,26 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="cursor-light" aria-hidden="true"></div>
-    <header class="site-header">
-<!doctype html>
-<html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chuyện của tớ | Bản nhạc lệch nhịp đầy tự lập</title>
-    <meta name="description" content="Trang nhật ký kể chuyện tương tác (storytelling portfolio) của tớ. Nhấn Space để khám phá câu chuyện tự lập, âm nhạc, sở thích và những dấu mốc trưởng thành." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=2" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -48,7 +29,7 @@
       </nav>
     </header>
     <main>
-      <section id="hero" class="hero section-panel" data-effect="sky">
+      <section id="hero" class="hero section-panel reveal-init" data-effect="sky">
         <div class="hero-media visual-card">
           <div class="sun"></div>
           <div class="mountain mountain-back"></div>
@@ -73,9 +54,7 @@
           </div>
         </div>
       </section>
-      <section id="profile" class="profile-grid">
-        <article class="stat-card" data-effect="steam">
-      <section id="profile" class="profile-grid" data-effect="profile">
+      <section id="profile" class="profile-grid reveal-init" data-effect="profile">
         <article class="stat-card">
           <span class="stat-number">4</span>
           <h2>Tuổi về với ông bà</h2>
@@ -84,7 +63,6 @@
             vẻ nghiêm, nhưng cũng là bản tutorial khá xịn của đời tớ.
           </p>
         </article>
-        <article class="stat-card" data-effect="note">
         <article class="stat-card">
           <span class="stat-number">8</span>
           <h2>Tuổi học piano</h2>
@@ -94,41 +72,145 @@
             mình.
           </p>
         </article>
-        <article class="stat-card" data-effect="shuttle">
         <article class="stat-card">
           <span class="stat-number">9</span>
           <h2>Lớp 9 bắt kịp cầu lông tỉnh</h2>
           <p>
+            Những năm ở cạnh ông nội giúp tớ có nền tảng cầu lông tốt, đến lớp 9
+            có thể chơi theo kịp vận động viên chuyên nghiệp của tỉnh.
+          </p>
+        </article>
+      </section>
+      <section id="timeline" class="story section-panel split right reveal-init" data-effect="page">
+        <div class="visual-card collage">
+          <div class="photo photo-one">TQ</div>
+          <div class="photo photo-two">HG</div>
+          <div class="photo photo-three">Sky</div>
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow">Dòng đời ngắn gọn, vì kể hết thì thành tiểu thuyết</p>
+          <h2>Tớ lớn lên bằng những lần chuyển chỗ ở và tự lập sớm.</h2>
+          <p>
+            Năm 9 tuổi tớ chuyển về với bố mẹ, nhưng vẫn sống xa nhà để đi học.
+            Năm 11 tuổi tớ khá nghịch, đến 12 tuổi thì về sống cùng bố mẹ. Đó là
+            khoảng thời gian tớ không thích lắm, vì bị đánh đòn khá nhiều.
+          </p>
+          <p>
+            Tớ không thân với bố mẹ cho lắm, dù biết bố mẹ rất thương tớ. Có lẽ
+            vì tớ đã sống xa bố mẹ quá lâu, và tớ quen với việc tự lập như quen
+            bấm nút skip intro.
+          </p>
         </div>
       </section>
-      <section class="three-panel" aria-label="Sở thích">
-        <article data-effect="steam">
-      <section class="three-panel" aria-label="Sở thích" data-effect="interests">
+      <section id="music" class="story section-panel split left reveal-init" data-effect="riff">
+        <div class="story-copy">
+          <p class="eyebrow">Piano, guitar, trống và một cái bàn tội nghiệp</p>
+          <h2>Âm nhạc là nơi tớ nói thật mà không cần nhìn thẳng vào camera.</h2>
+          <p>
+            Lớp 8, tớ quyết định học guitar và được bố mua cho cây đàn đầu tiên.
+            Cây đàn đó, dù có thế nào, tớ cũng không bán. Sau này tớ tự mua được
+            guitar điện của riêng mình.
+          </p>
+          <p>
+            Tớ cũng biết chơi thêm trống sau khóa bổ túc đợt Tết của anh tớ năm
+            lớp 8, cộng thêm quá trình tự gõ vào bàn để chắc nhịp. Chiếc bàn chắc
+            cũng không đồng ý, nhưng nó đã tham gia ban nhạc.
+          </p>
+        </div>
+        <div class="visual-card instrument-stage" aria-label="Minh họa sân khấu âm nhạc">
+          <div class="guitar"></div>
+          <div class="piano-keys">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+          <div class="drum"></div>
+        </div>
+      </section>
+      <section class="three-panel reveal-init" aria-label="Sở thích" data-effect="interests">
         <article>
           <span class="icon">🍳</span>
           <h3>Nấu ăn</h3>
           <p>Tớ thích nấu ăn, vì đó là cách làm cho một ngày bình thường có mùi vị hơn.</p>
         </article>
-        <article data-effect="game">
         <article>
           <span class="icon">🎮</span>
           <h3>Chơi game</h3>
           <p>Game hợp với tớ: có thử thách, có reset, có lúc thắng vì... may mắn.</p>
         </article>
-        <article data-effect="hug">
         <article>
           <span class="icon">🛌</span>
           <h3>Ôm ngủ</h3>
           <p>Tớ thích cảm giác được ôm ngủ. Nói ngắn gọn: đây là buff tinh thần.</p>
+        </article>
+      </section>
+      <section id="school" class="story section-panel split right reveal-init" data-effect="confetti">
+        <div class="visual-card exam-card">
+          <div class="ticket">Thi chuyên</div>
+          <div class="score-line"></div>
+          <div class="score-line short"></div>
+          <div class="stamp">Đỗ vớt</div>
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow">Hai tuần căng như dây đàn guitar</p>
+          <h2>Hết lớp 9, tớ quyết định thi chuyên.</h2>
+          <p>
+            Tớ dành ra hai tuần học cực lực và may mắn đỗ chuyên, mặc dù chỉ là
+            đỗ vớt vào lớp kém nhất. Nghe khiêm tốn vậy thôi, chứ vẫn là một màn
+            clutch khá đẹp.
+          </p>
+          <p>
+            Ba năm sau đó, tớ tiếp tục đi học xa nhà và về nhà ít hơn. Cũng có
+            yêu đương với vài người, và kết quả thì... series đó chưa có mùa tiếp
+            theo.
+          </p>
+        </div>
+      </section>
+      <section id="heart" class="heart-section section-panel reveal-init" data-effect="pulse">
+        <div>
+          <p class="eyebrow">Góc thật lòng</p>
+          <h2>Tớ hay làm trò, hay cợt nhả, nhưng không phải lúc nào cũng nhẹ lòng.</h2>
+        </div>
+        <div class="heart-copy">
+          <p>
+            Tớ bắt đầu hút thuốc ở cấp ba vì những vấn đề tớ gặp phải. Tớ không
+            mong người yêu tương lai tự ép bản thân chấp nhận việc đó, vì tớ biết
+            nó cũng chẳng tốt đẹp gì.
+          </p>
+          <p>
+            Lớp 11 tớ bắt đầu bị đau đầu, có lẽ đây là một trong số lý do khiến
+            tớ hút thuốc. Lên đại học, tớ trải qua khá nhiều sóng gió, đến giờ
+            vẫn chẳng biết vì sao mình vẫn sống. Có lẽ mạng tớ lớn, hoặc server
+            đời vẫn chưa kick.
           </p>
           <p>
             Tớ không có gu người yêu cụ thể. Tớ chỉ thích người thông minh. Và
-            neu người đó chịu được tính cợt nhả của tớ, khả năng cao là câu chuyện
-            se vui hơn nhiều.
             nếu người đó chịu được tính cợt nhả của tớ, khả năng cao là câu chuyện
             sẽ vui hơn nhiều.
           </p>
         </div>
       </section>
+      <section id="videos" class="videos section-panel reveal-init" data-effect="film">
+        <div class="section-heading">
+          <p class="eyebrow">Ba video đặt ở cuối</p>
+          <h2>Chỗ này để cậu thay bằng video của cậu.</h2>
+          <p>
+            Đặt 3 file video vào thư mục <code>videos</code> và đổi tên thành
+            <code>video-1.mp4</code>, <code>video-2.mp4</code>, <code>video-3.mp4</code>.
+          </p>
+        </div>
+        <div class="video-grid">
+          <video controls preload="metadata" poster="" src="videos/video-1.mp4"></video>
+          <video controls preload="metadata" poster="" src="videos/video-2.mp4"></video>
+          <video controls preload="metadata" poster="" src="videos/video-3.mp4"></video>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Viết bằng ngôi "tớ", để dành cho một người vừa biết nấu ăn, vừa biết chơi
+        nhạc, vừa hay làm trò, và đôi khi chỉ muốn được ôm ngủ cho yên.
+      </p>
+    </footer>
+    <script src="script.js?v=2"></script>
   </body>
 </html>
